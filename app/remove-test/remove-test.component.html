@@ -1,0 +1,45 @@
+<div style="width: 400px;">
+<div *ngIf="isRemoved" class="alert alert-success" >Test removed successfully</div>
+    <form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+        <div class="form-group">
+            <label for="center">Select Center</label>
+            <select ngModel name="centerName" #centerName="ngModel" id="centerName" class="form-control" required>
+                <option *ngFor="let center of diagnosticCenterList" [value]="center.centerName">{{center.centerName}}</option>
+            </select>
+        </div>
+        <div *ngIf="centerName.touched && centerName.invalid" class="alert alert-danger" >
+          <div *ngIf="centerName.errors.required">center is required</div>
+        </div>
+         <button type="submit" class="btn btn-success" [disabled]="!f.valid">Get Tests</button>
+    </form>
+</div>
+<div class="panel panel-primary" *ngIf="isSelected">
+    <div class="panel-heading">
+      <h2>Test List</h2>
+      <div class="active-cyan-4 mb-4">
+        <input class="form-control" type="text" [(ngModel)]="searchText"  placeholder="Search by test name" aria-label="Search">
+      </div>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>TestId</th>
+            <th>TestName</th>
+            <th>Action</th> 
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let test of testList| filterTest : searchText">
+            <td>{{test.testId}}</td>
+            <td>{{test.testName}}</td>
+            <td>
+                <button (click)="removeTest(test.testName)" class="btn btn-danger">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+        

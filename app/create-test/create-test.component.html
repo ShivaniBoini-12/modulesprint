@@ -1,0 +1,16 @@
+<div *ngIf="testExist" class="alert alert-danger" >Test Name already exists</div>
+<div *ngIf="isCreated" class="alert alert-success" >Test added successfully</div>
+<h3>Create Test</h3>
+<div style="width: 400px;">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="testName">Test Name</label>
+      <input formControlName="testName" type="text" id="testName" class="form-control" placeholder="Enter test name" >
+      <div *ngIf="form.get('testName').touched && form.get('testName').invalid" class="alert alert-danger" >
+        <div *ngIf="form.get('testName').errors.required">Test Name is required</div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-success" [disabled]="!form.valid">Submit</button>
+  </form>
+</div>
+

@@ -1,0 +1,35 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>DiagnostiCenter List</h2>
+      <div class="active-cyan-4 mb-4">
+        <input class="form-control" type="text" [(ngModel)]="searchText"  placeholder="Search by center name" aria-label="Search">
+      </div>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>CenterId</th>
+            <th>CenterName</th>
+            <th>ContactNumber</th>
+            <th>Address</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let diagnosticCenter of diagnosticCenterList  | filterCenter : searchText">
+            <td>{{diagnosticCenter.centerId}}</td>
+            <td>{{diagnosticCenter.centerName}}</td>
+            <td>{{diagnosticCenter.contactNumber}}</td>
+            <td>{{diagnosticCenter.address}}</td>
+      
+            <td>
+              <button (click)="gotoViewTests(diagnosticCenter.centerName)" class="btn btn-info" style="margin-left: 10px">ViewTests</button>
+              <button (click)="gotoCreateTest(diagnosticCenter.centerName)"class="btn btn-info" style="margin-left: 10px">CreateTest</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+

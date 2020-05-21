@@ -1,0 +1,38 @@
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>User List</h2>
+      <div class="active-cyan-4 mb-4">
+        <input class="form-control" type="text" [(ngModel)]="searchText"  placeholder="Search by user name" aria-label="Search">
+      </div>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>UserId</th>
+            <th>UserName</th>
+            <th>password</th>
+            <th>emailId</th>
+            <th>ContactNo</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let r of user | filterCenter : searchText">
+            <td>{{r.userId}}</td>
+            <td>{{r.userName}}</td>
+            <td>{{r.password}}</td>
+            <td>{{r.emailId}}</td>
+            <td>{{r.contactNo}}</td>
+
+            <td>
+              
+              <button (click)="loadData(userId)"class="btn btn-info" style="margin-left: 10px">Appointment List</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
+

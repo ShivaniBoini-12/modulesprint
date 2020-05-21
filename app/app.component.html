@@ -1,0 +1,46 @@
+
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a routerLink="viewCenters" class="btn btn-primary " role="button" routerLinkActive="active">ViewCenters</a>
+      </li>
+      <li class="nav-item">
+          <a routerLink="addCenter" class="btn btn-primary " role="button" routerLinkActive="active">AddCenter</a>
+      </li>
+      <li class="nav-item">
+          <a routerLink="removeCenter"  class="btn btn-primary " role="button" routerLinkActive="active">RemoveCenter</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="addTest"  class="btn btn-primary " role="button" routerLinkActive="active">AddTest</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="removeTest"  class="btn btn-primary " role="button" routerLinkActive="active">RemoveTest</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="approveAppointment"  class="btn btn-primary " role="button" routerLinkActive="active">Approve Appointment</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="user"  class="btn btn-primary " role="button" routerLinkActive="active">CreateUser</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="viewUser"  class="btn btn-primary " role="button" routerLinkActive="active">ViewUser</a>
+      </li>
+      
+    </ul>
+  </nav>
+  <div class="container">
+    <br>
+    <h2 style="text-align: center; color:dodgerblue;">{{title}}</h2>
+    <hr>  
+    <div class="card">
+      <div class="card-body">
+    <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+  
+  <footer class="footer">
+    <div class="container">
+        
+    </div>
+  </footer>

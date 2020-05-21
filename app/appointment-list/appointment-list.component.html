@@ -1,0 +1,33 @@
+<div class="panel panel-primary" >
+    <div class="panel-heading">
+      <h2>Appoitnment List</h2>
+      <div class="active-cyan-4 mb-4">
+        <input class="form-control" type="text" [(ngModel)]="searchText"  placeholder="Search by test name" aria-label="Search">
+      </div>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Appoitnment Id</th>
+            <th>User Name</th>
+            <th>Center Name</th>
+            <th>Test Name</th> 
+            <th>Approve Appointment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let appointment of centerAppointmentList | filterTest : searchText">
+            <td>{{appointment.appointmentId}}</td>
+            <td>{{appointment.userName}}</td>
+            <td>{{appointment.centerName}}</td>
+            <td>{{appointment.testName}}</td>
+            <td>
+                <button (click)="approve(appointment)" class="btn btn-danger" style="margin-left: 10px" *ngIf="!appointment.approved">click to approve</button>
+                <button class="btn btn-info" style="margin-left: 10px" *ngIf="appointment.approved"[disabled]="true">approved</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

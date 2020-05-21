@@ -1,0 +1,36 @@
+<div *ngIf="centerExist" class="alert alert-danger" >Entered Center Name already exists</div>
+<div *ngIf="isCreated" class="alert alert-success" >Center added successfully</div>
+<h3 class="text-left">Create Diagnostic Center</h3>
+<div style="width: 400px;">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="centerName">Center Name</label>
+      <input formControlName="centerName" type="text" id="centerName" class="form-control"  placeholder="Enter center name">
+      <div *ngIf="form.get('centerName').touched && form.get('centerName').invalid" class="alert alert-danger" >
+        <div *ngIf="form.get('centerName').errors.required">Center Name is required</div>
+        <div *ngIf="form.get('centerName').errors.centerTaken">Center Name already present</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="contactNumber">Contact Number</label>
+      <input formControlName="contactNumber" type="text" id="contactNumber" class="form-control" placeholder="Enter contact number">
+      <div *ngIf="form.get('contactNumber').touched && form.get('contactNumber').invalid" class="alert alert-danger" >
+        <div *ngIf="form.get('contactNumber').errors.required">Contact Number is required</div>
+        <div *ngIf="form.get('contactNumber').errors.pattern">Contact No must be a 10 digit number and must start with 6-9 digit</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="address">Address</label>
+      <input formControlName="address" type="text"  id="address" class="form-control" placeholder="Enter center address">
+      <div *ngIf="form.get('address').touched && form.get('address').invalid" class="alert alert-danger" >
+        <div *ngIf="form.get('address').errors.required">Address is required</div>
+      </div>
+    </div>
+
+    <div class='myDiv'>
+    <button type="submit" class="btn btn-success" [disabled]="!form.valid">Submit</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,45 @@
+<div *ngIf="userExist" class="alert alert-danger" >Entered user Name already exists</div>
+<div *ngIf="isCreated" class="alert alert-success" >user added successfully</div>
+<h3 class="text-left">Create User</h3>
+<div style="width: 400px;">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="userName">Center Name</label>
+      <input formControlName="userName" type="text" id="userName" class="form-control"  placeholder="Enter user name">
+      <div *ngIf="form.get('userName').touched && form.get('userName').invalid" class="alert alert-danger" >
+        <div *ngIf="form.get('userName').errors.required">user Name is required</div>
+        <div *ngIf="form.get('userName').errors.centerTaken">user Name already present</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="contactNo">Contact No</label>
+      <input formControlName="contactNo" type="text" id="contactNo" class="form-control" placeholder="Enter contact number">
+      <div *ngIf="form.get('contactNo').touched && form.get('contactNo').invalid" class="alert alert-danger" >
+        <div *ngIf="form.get('contactNo').errors.required">Contact Number is required</div>
+        <div *ngIf="form.get('contactNor').errors.pattern">Contact No must be a 10 digit number and must start with 6-9 digit</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input formControlName="password" type="password"  id="passwors" class="form-control" placeholder="Enter password">
+      <div *ngIf="form.get('password').touched && form.get('password').invalid" class="alert alert-danger" >
+        <div *ngIf="form.get('password').errors.required">password is required</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+        <label for="emailId">emailId</label>
+        <input formControlName="emailId" type="text" id="emailId" class="form-control"  placeholder="Enter emailId">
+        <div *ngIf="form.get('emailId').touched && form.get('emailId').invalid" class="alert alert-danger" >
+          <div *ngIf="form.get('emailId').errors.required">emailId is required</div>
+          <div *ngIf="form.get('emailId').errors.centerTaken">emailId already present</div>
+        </div>
+      </div>
+
+    <div class='myDiv'>
+    <button type="submit" class="btn btn-success" [disabled]="!form.valid">Submit</button>
+    </div>
+  </form>
+</div>
